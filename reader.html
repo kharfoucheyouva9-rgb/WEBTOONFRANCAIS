@@ -1,0 +1,27 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Lecteur — French Webtoons</title>
+<style>
+  body{margin:0;font-family:Arial;background:#0f0f12;color:#fff}
+  header{background:#111;padding:12px 16px;position:sticky;top:0}
+  .wrap{max-width:900px;margin:0 auto;padding:12px}
+  .page{margin:10px 0;background:#16161b;border:1px solid #26262e;border-radius:10px;overflow:hidden}
+  .page img{width:100%;height:auto;display:block}
+</style></head><body>
+<header><a href="index.html" style="color:#fff;text-decoration:none">← Accueil</a></header>
+<div class="wrap"><h2 id="title"></h2><div id="reader"></div></div>
+<script>
+function qs(k){return new URLSearchParams(location.search).get(k)}
+const data={exemple:{titre:"L'Éveil du Mana",episodes:[
+{titre:"Chapitre 1 — Le départ",images:[
+  "https://picsum.photos/800/1200?random=11",
+  "https://picsum.photos/800/1200?random=12",
+  "https://picsum.photos/800/1200?random=13"]},
+{titre:"Chapitre 2 — La rencontre",images:[
+  "https://picsum.photos/800/1200?random=21",
+  "https://picsum.photos/800/1200?random=22",
+  "https://picsum.photos/800/1200?random=23"]}]}};
+const id=qs('id'); const s=data[id]; if(!s){document.getElementById('title').textContent='Introuvable';}
+else{document.getElementById('title').textContent=s.titre; const rd=document.getElementById('reader');
+s.episodes[0].images.forEach(src=>{const d=document.createElement('div');d.className='page';d.innerHTML='<img src="'+src+'"/>';rd.appendChild(d);});}
+</script></body></html>
