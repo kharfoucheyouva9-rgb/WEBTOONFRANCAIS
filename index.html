@@ -1,0 +1,41 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>French Webtoons — Lecture</title>
+<style>
+  body{margin:0;font-family:Arial, sans-serif;background:#0f0f12;color:#fff}
+  header{background:#111;padding:14px 16px;position:sticky;top:0}
+  .wrap{max-width:1100px;margin:16px auto;padding:0 12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+  .card{background:#16161b;border:1px solid #26262e;border-radius:10px;overflow:hidden;text-decoration:none;color:inherit}
+  .card img{width:100%;height:280px;object-fit:cover;background:#222}
+  .p{padding:10px}.title{font-weight:700}.small{color:#bbb;font-size:13px}
+</style></head><body>
+<header><div class="wrap"><span class="brand">📚 French Webtoons</span></div></header>
+<div class="wrap">
+  <h1>Lecture uniquement (prototype)</h1>
+  <p class="small">Clique sur une œuvre pour lire ses épisodes.</p>
+  <div id="grid" class="grid"></div>
+</div>
+<script>
+const catalog={series:[{id:"exemple",titre:"L'Éveil du Mana",auteur:"Auteur Démo",
+cover:"https://picsum.photos/400/600?random=1",
+synopsis:"Un jeune aventurier découvre son cœur de mana...",
+episodes:[
+{id:"ep1",titre:"Chapitre 1 — Le départ",images:[
+  "https://picsum.photos/800/1200?random=11",
+  "https://picsum.photos/800/1200?random=12",
+  "https://picsum.photos/800/1200?random=13"]},
+{id:"ep2",titre:"Chapitre 2 — La rencontre",images:[
+  "https://picsum.photos/800/1200?random=21",
+  "https://picsum.photos/800/1200?random=22",
+  "https://picsum.photos/800/1200?random=23"]}]}]};
+const grid=document.getElementById('grid');
+catalog.series.forEach(s=>{
+  const a=document.createElement('a'); a.className='card'; a.href='reader.html?id='+s.id;
+  a.innerHTML='<img src="'+s.cover+'"/><div class="p"><div class="title">'+s.titre+
+    '</div><div class="small">par '+s.auteur+' • '+s.episodes.length+
+    ' épisodes</div><div>'+s.synopsis+'</div></div>';
+  grid.appendChild(a);
+});
+</script>
+</body></html>
